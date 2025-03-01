@@ -1,4 +1,4 @@
-# Openai_translation_buddy
+# Openai Translation Buddy
 
 If you want to get use of the pile of translations you collected in google translate, then give it a try!
 
