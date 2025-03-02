@@ -2,21 +2,8 @@
 
 source config.sh
 
-echo $BASE_PROMPT
-
-if [[ $POINTER -eq -1 ]]; then
-    lines=$(echo $(wc -l $FILE) | awk '{print $1}')
-    pointer=$lines
-else
-    pointer=$POINTER    
-fi
-
-echo $pointer
-
-words=""
-
 wordsExtractor() {
-    count=$WORDS_PER_MSG
+    local count=$WORDS_PER_MSG
     while [[ $count -gt 0 && $pointer -gt 0 ]]; do
         echo $pointer
         w=$(sed -n "${pointer}p" $FILE | awk -F, '{print $3}')
@@ -30,13 +17,6 @@ wordsExtractor() {
     done
     sed -i '' "/^export POINTER=/s/.*/export POINTER=$pointer/" config.sh
 }
-
-wordsExtractor
-
-echo $words
-echo $pointer
-
-resp=""
 
 call_openai() {
     resp=$(curl "https://api.openai.com/v1/chat/completions" \
@@ -59,14 +39,6 @@ call_openai() {
     )
 }
 
-call_openai
-
-content=$(jq '.choices.[-1].message.content' <<< $resp)
-
-body=$(echo $content | sed 's/\\n/\n/g')
-
-echo $body
-
 send_email() {
     echo "sending email"
     subject="Regular spanish examples"
@@ -77,6 +49,27 @@ send_email() {
         --mail-rcpt $TO \
         --user $FROM:"$APP_PASS" \
         --upload-file <(echo -e "From: $FROM\nTo: $TO\nSubject: $subject\n\n$body")
-    }
+}
 
+if [[ $POINTER -eq -1 ]]; then
+    lines=$(echo $(wc -l $FILE) | awk '{print $1}')
+    pointer=$lines
+else
+    pointer=$POINTER    
+fi
+
+echo "current words pointer: $pointer"
+
+words=""
+wordsExtractor
+
+echo "current slice of words: $words"
+
+resp=""
+call_openai
+
+content=$(jq '.choices.[-1].message.content' <<< $resp)
+
+body=$(echo $content | sed 's/\\n/\n/g')
+echo $body
 send_email
