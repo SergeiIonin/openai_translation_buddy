@@ -4,57 +4,57 @@ source config.sh
 
 validate_config() {
     # validate mail variables
-    if [ -z $APP_PASS ]; then
+    if [[ -z "$APP_PASS" ]]; then
         echo "APP_PASS is not set"
         exit 1
     fi
-    if [ -z $FROM ]; then
+    if [[ -z "$FROM" ]]; then
         echo "FROM is not set"
         exit 1
     fi
-    if [ -z $TO ]; then
+    if [[ -z "$TO" ]]; then
         echo "TO is not set"
         exit 1
     fi
-    if [ -z $SUBJECT ]; then
+    if [[ -z "$SUBJECT" ]]; then
         echo "SUBJECT is not set"
         exit 1
     fi
     # validate openai variables
-    if [ -z $OPENAI_PROJECT_ID ]; then
+    if [[ -z "$OPENAI_PROJECT_ID" ]]; then
         echo "OPENAI_PROJECT_ID is not set"
         exit 1
     fi
-    if [ -z $OPENAI_KEY ]; then
+    if [[ -z "$OPENAI_KEY" ]]; then
         echo "OPENAI_KEY is not set"
         exit 1
     fi
-    if [ -z $MODEL ]; then
+    if [[ -z "$MODEL" ]]; then
         echo "MODEL is not set"
         exit 1
     fi
     # validate translations variables
-    if [ -z $LANG_FROM ]; then
+    if [[ -z "$LANG_FROM" ]]; then
         echo "LANG_FROM is not set"
         exit 1
     fi
-    if [ -z $LANG_TO ]; then
+    if [[ -z "$LANG_TO" ]]; then
         echo "LANG_TO is not set"
         exit 1
     fi
-    if [ -z $BASE_PROMPT ]; then
+    if [[ -z "$BASE_PROMPT" ]]; then
         echo "BASE_PROMPT is not set"
         exit 1
     fi
-    if [ -z $FILE ]; then
+    if [[ -z "$FILE" ]]; then
         echo "FILE is not set"
         exit 1
     fi
-    if [ -z $WORDS_PER_MSG ]; then
+    if [[ -z "$WORDS_PER_MSG" ]]; then
         echo "WORDS_PER_MSG is not set"
         exit 1
     fi
-    if [ -z $POINTER ]; then
+    if [[ -z "$POINTER" ]]; then
         echo "POINTER is not set, set it to -1 to start from the end of the file"
         exit 1
     fi
