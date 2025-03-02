@@ -2,7 +2,7 @@
 
 source config.sh
 
-wordsExtractor() {
+words_extractor() {
     local count=$WORDS_PER_MSG
     while [[ $count -gt 0 && $pointer -gt 0 ]]; do
         echo $pointer
@@ -61,7 +61,7 @@ fi
 echo "current words pointer: $pointer"
 
 words=""
-wordsExtractor
+words_extractor
 
 echo "current slice of words: $words"
 
