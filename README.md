@@ -36,7 +36,7 @@ e.g. "gpt-4o"
 NB! Your OpenAI account will be billed for API requests made on your behalf to OpenAI. 
 
 #### Translation
-This project is tailored to the format of exported CSV used by Google Translate. E.g. if you have a line of translation from spanish to russian will be:
+This project is tailored to the format of exported CSV used by Google Translate. E.g. a line of translation from spanish to russian will be:
 ```csv
 Spanish,Russian,tarro,банка
 ```
