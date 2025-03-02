@@ -7,9 +7,7 @@ This project will pick up adjustable number of words from your translations CSV 
 1) Checkout this repo via `git clone https://github.com/SergeiIonin/openai_translation_buddy`
 2) Go to the directory `openai_translation_buddy`
 3) Export your translations from Google Translate or provide a CSV file (`,` or `|` separated) with at least 3 columns where 1st is a original language (e.g. "spanish"), second is the target language (e.g. "english"), the third is the expression in original language (e.g. "arbol") and fourth column is an optional expression in the target language (not used anywhere further)
-4) Run the script `run_cron.sh` which is by default set up be invoke the main script `run.sh` every day at 3 pm (you can customize time very simple, for more info reach out docs for [cronjob](https://docs.cron-job.org/))
-
-This script sends you emails with translations and examples of the foreign language on a regular basis.
+4) Run the script `run_cron.sh` which is set up by default to send emails every day at 3 pm (you can customize time very simple, for more info reach out docs for [cronjob](https://docs.cron-job.org/))
 
 ### Set up
 Open `config.sh` and put your variables for each of the exported environment variable.
